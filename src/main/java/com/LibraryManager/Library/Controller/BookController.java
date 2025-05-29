@@ -2,6 +2,7 @@ package com.LibraryManager.Library.Controller;
 
 import com.LibraryManager.Library.Entity.Book;
 import com.LibraryManager.Library.Service.BookService;
+import com.LibraryManager.Library.payload.BookDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,22 +17,22 @@ public class BookController {
     private BookService bookService;
 
     @PostMapping
-    public Book createBook(@RequestBody Book book){
-        return bookService.createBook(book);
+    public BookDto createBook(@RequestBody BookDto bookDto){
+        return bookService.createBook(bookDto);
     }
 
     @GetMapping
-    public List<Book> getAllBooks(){
+    public List<BookDto> getAllBooks(){
         return bookService.getAllBooks();
     }
 
     @GetMapping("/{id}")
-    public Book getBookById(@PathVariable long id){
+    public BookDto getBookById(@PathVariable long id){
         return bookService.getBookById(id);
     }
 
     @PutMapping("/{id}")
-    public Book updateBook(@PathVariable long id,@RequestBody Book book){
+    public BookDto updateBook(@PathVariable long id,@RequestBody BookDto book){
         return bookService.updateBook(id,book);
     }
 
